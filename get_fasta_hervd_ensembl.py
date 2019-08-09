@@ -74,9 +74,10 @@ for ent in entlist:
         pl = ent.sP - 1
     outfile = open("./data/genes/HERVd/entities/%s.fa" % ent.HERVid, "w")
     outfile.writelines(ent.__repr__())
-    #print(ent.eP, ent.sP, pl, pr, seq[:ent.eP - ent.sP - 1], seq)
-    #outfile.writelines(seq[:ent.eP - ent.sP + 1])
-    output(outfile, seq[:ent.eP - ent.sP + 1])
+    if (ent.strand == "+"):
+        output(outfile, seq[:ent.eP - ent.sP + 1])
+    else:
+        output(outfile, reverse(seq[:ent.eP - ent.sP + 1]))
     outfile.close()
 
 chrfile.close()
