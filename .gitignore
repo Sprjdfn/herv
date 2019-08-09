@@ -24,6 +24,10 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.fa
+data/HERVd/elements/
+data/HERVd/entities/
+data/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
