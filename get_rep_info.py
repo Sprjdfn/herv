@@ -11,9 +11,9 @@ while page <= 29031:
     print("parsing page %s:\ngetting html..." % page, end='')
     url = "https://herv.img.cas.cz/repeats?page=%d" % page
     i = 0
-    while i < 10:
+    while True:
         try:
-            tmp = requests.get(url, timeout = 10)
+            tmp = requests.get(url, timeout = 5)
             r = tmp.text
             break;
         except requests.exceptions.RequestException as e:
