@@ -4,15 +4,26 @@ import re
 
 outfile = open("./data/genes/HERVd/repeats.txt", "w")
 
+r = ""
+
 page = 1
 while page <= 29031:
     print("parsing page %s:\ngetting html..." % page, end='')
     url = "https://herv.img.cas.cz/repeats?page=%d" % page
-    r = requests.get(url)
+    i = 0
+    while i < 10:
+        try:
+            tmp = requests.get(url, timeout = 10)
+            r = tmp.text
+            break;
+        except requests.exceptions.RequestException as e:
+            print(e)
+            i = i + 1
+    
     #outfile.write(r.text[r.text.find("<tbody>"):r.text.find("</tbody>")+8])
     #outfile.close()
     print("done.\nparsing html...", end='')
-    DOMTree = xml.dom.minidom.parseString(r.text[r.text.find("<tbody>"):r.text.find("</tbody>")+8])
+    DOMTree = xml.dom.minidom.parseString(r[r.find("<tbody>"):r.find("</tbody>")+8])
     collection = DOMTree.documentElement
     for rep in collection.getElementsByTagName("tr"):
         tds = rep.getElementsByTagName("td")
