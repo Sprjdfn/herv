@@ -17,6 +17,14 @@ class entity:
             return self.sP < other.sP
         return self.eP < other.eP
 
+def reverse(s):
+    s = s[::-1]
+    s = list(s)
+    for i in range(len(s)):
+        s[i] = rlist[s[i]]
+    s = ''.join(s)
+    return s
+
 def output(file, s):
     n = len(s) // 60
     nowr = 60
@@ -54,7 +62,7 @@ chrfile.readline()
 seq = re.sub(r"\s", "", chrfile.readline())
 pr = 50
 pl = 0
-#seq是chr上[pl,pr)的序列，与bed格式相匹配
+#seq是chr上[pl,pr]的序列，原数据库与bed格式不匹配
 
 for ent in entlist:
     if (ent.chro[3:] != nowchr):

@@ -65,7 +65,7 @@ chrfile.readline()
 seq = re.sub(r"\s", "", chrfile.readline())
 pr = 50
 pl = 0
-#seq是chr上[pl,pr)的序列，与bed格式相匹配
+#seq是chr上[pl,pr]的序列，原数据库与bed格式不匹配
 
 for ent in entlist:
     if (ent.chro != nowchr):
