@@ -84,7 +84,7 @@ for ent in entlist:
     if (ent.sP > pl):
         seq = seq[ent.sP - pl - 1:]
         pl = ent.sP - 1
-    outfile = open("./data/genes/HERVd/entities/%s/%s_%s.fa" % (nowchr, ent.HERVid, ent.ele), "w")
+    outfile = open("./data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (nowchr, ent.HERVid, ent.ele, ent.sP, ent.eP), "w")
     outfile.writelines(ent.__repr__())
     if (ent.strand == "+"):
         output(outfile, seq[:ent.eP - ent.sP + 1])

@@ -13,7 +13,7 @@ class entity:
     def __lt__(self, other):
         return self.ele < other.ele
 
-entfile = open("./data/genes/HERVd/entities.tsv", "r")
+entfile = open("./data/genes/HERVd/repeats.txt", "r")
 entlist = []
 
 #st = int(input())
@@ -28,7 +28,7 @@ while True:
     if (line == ""):
         break
     items = re.split(r"\t", re.sub("\n", "", line))
-    entlist.append(entity(items[1], items[10], int(items[11]), int(items[12]), items[13], items[9]))
+    entlist.append(entity(items[2], items[4], int(items[5]), int(items[6]), items[7], items[1]))
     n = n + 1
 
 entfile.close()
@@ -43,7 +43,7 @@ for ent in entlist:
         elefile.close()
         nowele = ent.ele
         elefile = open("./data/genes/HERVd/elements/%s.fa" % nowele, "w")
-    elefile.write(open("./data/genes/HERVd/entities/%s/%s.fa" % (ent.chro, ent.HERVid), "r").read())
+    elefile.write(open("./data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (ent.chro, ent.HERVid, ent.ele, ent.sP, ent.eP), "r").read())
     elefile.write("\n")
 
 elefile.close()
