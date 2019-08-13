@@ -38,6 +38,8 @@ while True:
         break
     items = re.split(r"\t", re.sub(r"\n", "", line))
     #print(items[10], items[11], items[12])
+    items[11] = int(items[11]) + 1
+    items[12] = int(items[12]) + 1
     oplist.append(op(items[1], items[10], items[11], 3))
     oplist.append(op(items[1], items[10], items[12], 4))
     if(items[13] == "C"):
@@ -75,7 +77,7 @@ for tmp in oplist:
     
 print(sta)
 
-outfile = open("../data/genes/HERVd/intergenic.gtf", "w")
+outfile = open("../data/genes/HERVd/intergenic1.gtf", "w")
 
 for tmp in ervlist:
     if (ervlist[tmp][0] == 1):
