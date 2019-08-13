@@ -64,7 +64,7 @@ for tmp in ervlist:
         nowchr = tmp.chr
         nowstr = tmp.str
     elif (sta == 0 and stb != 0):
-        outfile.write("%s\tENSEMBL\texon\t%s\t%s\t.\t%s\t.\tgene_id \"%s\"; transcript_id \"%sT1\";\n" % (nowchr, nowst, tmp.pos + 1, nowstr, nowid, nowid))
+        outfile.write("%s\tENSEMBL\texon\t%s\t%s\t.\t%s\t.\tgene_id \"%s\"; transcript_id \"%sT1\";\n" % (nowchr, nowst, tmp.pos, nowstr, nowid, nowid))
         nowid = ""
         cnt += 1
     stb = sta

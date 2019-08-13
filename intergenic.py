@@ -23,8 +23,8 @@ while True:
     if (line == ""):
         break
     items = re.split(r"\t", re.sub(r"\n", "", line))
-    oplist.append(op("ENSG", items[0], items[3], 1))
-    oplist.append(op("ENSG", items[0], items[4], 2))
+    oplist.append(op("ENSG", items[0], items[3], 3))
+    oplist.append(op("ENSG", items[0], items[4], 1))
 
 gencodefile.close()
 
@@ -39,9 +39,9 @@ while True:
     items = re.split(r"\t", re.sub(r"\n", "", line))
     #print(items[10], items[11], items[12])
     items[11] = int(items[11]) + 1
-    items[12] = int(items[12]) + 1
-    oplist.append(op(items[1], items[10], items[11], 3))
-    oplist.append(op(items[1], items[10], items[12], 4))
+    items[12] = int(items[12]) + 2
+    oplist.append(op(items[1], items[10], items[11], 4))
+    oplist.append(op(items[1], items[10], items[12], 2))
     if(items[13] == "C"):
         items[13] = "-"
     ervlist[items[1]] = [1, items]
@@ -59,19 +59,19 @@ stb = 0
 blist = []
 
 for tmp in oplist:
-    if (tmp.type == 1):
+    if (tmp.type == 3):
         sta = sta + 1
         if (stb != 0):
             for tmp in blist:
                 ervlist[tmp][0] = 0
-    elif (tmp.type == 2):
+    elif (tmp.type == 1):
         sta = sta - 1
-    elif (tmp.type == 3):
+    elif (tmp.type == 4):
         stb = stb + 1
         blist.append(tmp.id)
         if (sta != 0):
             ervlist[tmp.id][0] = 0
-    elif (tmp.type == 4):
+    elif (tmp.type == 2):
         stb = stb - 1
         blist.remove(tmp.id)
     
