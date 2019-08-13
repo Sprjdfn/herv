@@ -13,7 +13,7 @@ class entity:
     def __lt__(self, other):
         return self.ele < other.ele
 
-entfile = open("./data/genes/HERVd/repeats.txt", "r")
+entfile = open("../data/genes/HERVd/repeats.txt", "r")
 entlist = []
 
 #st = int(input())
@@ -36,14 +36,14 @@ entfile.close()
 entlist.sort()
 
 nowele = entlist[0].ele
-elefile = open("./data/genes/HERVd/elements/%s.fa" % entlist[0].ele, "w")
+elefile = open("../data/genes/HERVd/elements/%s.fa" % entlist[0].ele, "w")
 
 for ent in entlist:
     if (ent.ele != nowele):
         elefile.close()
         nowele = ent.ele
-        elefile = open("./data/genes/HERVd/elements/%s.fa" % nowele, "w")
-    elefile.write(open("./data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (ent.chro, ent.HERVid, ent.ele, ent.sP, ent.eP), "r").read())
+        elefile = open("../data/genes/HERVd/elements/%s.fa" % nowele, "w")
+    elefile.write(open("../data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (ent.chro, ent.HERVid, ent.ele, ent.sP, ent.eP), "r").read())
     elefile.write("\n")
 
 elefile.close()

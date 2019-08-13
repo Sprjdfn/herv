@@ -1,7 +1,7 @@
 import requests;
 import re;
 
-downloadlist = open("entities.tsv", "r");
+downloadlist = open("../data/genes/HERVd/entities.tsv", "r");
 
 st = int(input());
 

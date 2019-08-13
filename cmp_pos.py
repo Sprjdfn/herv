@@ -20,7 +20,7 @@ class entities:
 entfile = open("./share_data/entities.tsv", "r")
 entlist = []
 
-gencodefile = open("./data/genes/gencode/gencode.v22.sorted.gff3", "r")
+gencodefile = open("../data/genes/gencode/gencode.v22.sorted.gff3", "r")
 
 sn = 0
 n = 0

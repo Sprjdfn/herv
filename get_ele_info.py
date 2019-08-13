@@ -2,7 +2,7 @@ import requests
 import xml.dom.minidom
 import re
 
-outfile = open("./data/genes/HERVd/elements.txt", "w")
+outfile = open("../data/genes/HERVd/elements.txt", "w")
 
 r = ""
 

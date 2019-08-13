@@ -17,6 +17,9 @@ class entity:
             return self.sP < other.sP
         return self.eP < other.eP
 
+rlist = {'a':'t', 'A':'T', 't':'a', 'T':'A', 'c':'g', 'C':'G', 'g':'c', 'G':'C', 'r':'y', 'R':'Y', 'y':'r', 'Y':'R', 'm':'k', 'k':'m', 'M':'K', 'K':'M', 's':'w', 'w':'s', 'S':'W', 'W':'S', 'h':'d', 'd':'h', 'H':'D', 'D':'H', 'b':'v', 'v':'b', 'B':'V', 'V':'B', 'n':'n', 'N':'N'}
+
+
 def reverse(s):
     s = s[::-1]
     s = list(s)
@@ -34,7 +37,7 @@ def output(file, s):
         n = n - 1
     file.write(s[nowr - 60:])
 
-entfile = open("./data/genes/HERVd/entities.tsv", "r")
+entfile = open("../data/genes/HERVd/entities.tsv", "r")
 entlist = []
 
 #st = int(input())
@@ -57,7 +60,7 @@ entfile.close()
 entlist.sort()
 
 nowchr = "1"
-chrfile = open("./data/genes/ensembl/Homo_sapiens.GRCh38.dna.chromosome.1.fa")
+chrfile = open("../data/genes/ensembl/Homo_sapiens.GRCh38.dna.chromosome.1.fa")
 chrfile.readline()
 seq = re.sub(r"\s", "", chrfile.readline())
 pr = 50
@@ -68,7 +71,7 @@ for ent in entlist:
     if (ent.chro[3:] != nowchr):
         chrfile.close()
         nowchr = ent.chro[3:]
-        chrfile = open("./data/genes/hg38/Homo_sapiens.GRCh38.dna.chromosome.%s.fa" % nowchr)
+        chrfile = open("../data/genes/hg38/Homo_sapiens.GRCh38.dna.chromosome.%s.fa" % nowchr)
         chrfile.readline()
         seq = re.sub(r"\s", "", chrfile.readline())
         pr = 50
@@ -80,7 +83,7 @@ for ent in entlist:
     if (ent.sP > pl):
         seq = seq[ent.sP - pl - 1:]
         pl = ent.sP - 1
-    outfile = open("./data/genes/HERVd/entities/%s.fa" % ent.HERVid, "w")
+    outfile = open("../data/genes/HERVd/entities/%s.fa" % ent.HERVid, "w")
     outfile.writelines(ent.__repr__())
     if (ent.strand == "+"):
         output(outfile, seq[:ent.eP - ent.sP + 1])

@@ -36,7 +36,7 @@ def output(file, s):
         n = n - 1
     file.write(s[nowr - 60:])
 
-entfile = open("./data/genes/HERVd/repeats.txt", "r")
+entfile = open("../data/genes/HERVd/repeats.txt", "r")
 entlist = []
 
 #st = int(input())
@@ -60,7 +60,7 @@ entlist.sort()
 
 nowchr = "chr1"
 print("chr1")
-chrfile = open("./data/genes/hg38/chr1.fa")
+chrfile = open("../data/genes/hg38/chr1.fa")
 chrfile.readline()
 seq = re.sub(r"\s", "", chrfile.readline())
 pr = 50
@@ -71,7 +71,7 @@ for ent in entlist:
     if (ent.chro != nowchr):
         chrfile.close()
         nowchr = ent.chro
-        chrfile = open("./data/genes/hg38/%s.fa" % nowchr)
+        chrfile = open("../data/genes/hg38/%s.fa" % nowchr)
         print(nowchr)
         chrfile.readline()
         seq = re.sub(r"\s", "", chrfile.readline())
@@ -84,7 +84,7 @@ for ent in entlist:
     if (ent.sP > pl):
         seq = seq[ent.sP - pl - 1:]
         pl = ent.sP - 1
-    outfile = open("./data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (nowchr, ent.HERVid, ent.ele, ent.sP, ent.eP), "w")
+    outfile = open("../data/genes/HERVd/repeats/%s/%s_%s(%d-%d).fa" % (nowchr, ent.HERVid, ent.ele, ent.sP, ent.eP), "w")
     outfile.writelines(ent.__repr__())
     if (ent.strand == "+"):
         output(outfile, seq[:ent.eP - ent.sP + 1])
